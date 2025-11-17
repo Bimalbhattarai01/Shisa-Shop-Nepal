@@ -4,6 +4,9 @@ import cors from "cors";
 import path from "path";
 import authRoutes from "./routes/authRoutes";
 import productRoutes from "./routes/productRoutes";
+import brandRoutes from "./routes/brandRoutes";
+import categoryRoutes from "./routes/categoryRoutes";
+import flavorRoutes from "./routes/flavorRoutes";
 import { connectToDatabase } from "./config/database";
 
 dotenv.config();
@@ -23,6 +26,9 @@ app.get("/", (_req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/brands", brandRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/flavors", flavorRoutes);
 
 connectToDatabase(mongoUri).then(() => {
   app.listen(port, () => {

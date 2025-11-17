@@ -13,8 +13,8 @@ const router = Router();
 
 router.get("/", getProducts);
 router.get("/:id", getProductById);
-router.post("/", authenticate, upload.single("image"), createProduct);
-router.put("/:id", authenticate, upload.single("image"), updateProduct);
+router.post("/", authenticate, upload.array("images", 5), createProduct);
+router.put("/:id", authenticate, upload.array("images", 5), updateProduct);
 router.delete("/:id", authenticate, deleteProduct);
 
 export default router;
